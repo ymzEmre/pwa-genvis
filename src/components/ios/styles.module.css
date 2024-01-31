@@ -1,0 +1,13 @@
+.container {
+  border: 1px solid black;
+  width: 16em;
+  height: 30em;
+}
+
+.container div {
+  margin: 10px;
+  width: 100px ;
+  height: 100px;
+  background-color: rebeccapurple;
+}
+
