@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
+import { Button } from 'primereact/button'
 
 const ImageUploader = ({ sendDataToParent }) => {
   const [selectedImage, setSelectedImage] = useState(null)
@@ -20,6 +21,7 @@ const ImageUploader = ({ sendDataToParent }) => {
   return (
     <div>
       <input type="file" onChange={handleImageChange} />
+      <Button label="Click Me2" />
 
       {selectedImage && (
         <div>
