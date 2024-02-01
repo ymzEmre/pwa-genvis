@@ -8,6 +8,11 @@ export default function Example() {
   const [status, setStatus] = useState(false)
 
   const [receivedData, setReceivedData] = useState(null)
+  const [inputValue, setInputValue] = useState('')
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value)
+  }
 
   const handleClick = () => {
     setStatus(!status)
@@ -19,22 +24,25 @@ export default function Example() {
 
   return (
     <div>
-      <UploadImage sendDataToParent={handleDataFromChild} />
-      <p>Status: {status ? 'true' : 'false'}</p>
+      {/* <UploadImage sendDataToParent={handleDataFromChild} /> */}
+      {/* <p>Status: {status ? 'true' : 'false'}</p> */}
       <button onClick={handleClick}>Toggle Status</button>
+      {/* <input type="text" value={inputValue} onChange={handleInputChange} /> */}
 
-      {status ? (
-        <div className={styles.container}>
-          <div className="box" onClick={handleClick}>
-            <Image src={receivedData ?? ''} width={150} height={150} alt="Selected" />
+      <div className={styles.container}>
+        {status ? (
+          <div>
+            <div className="box" onClick={handleClick}>
+              <Image src={receivedData ?? ''} width={100} height={100} alt="Selected" />
+            </div>
+            <div className="box">2</div>
+            <div className="box">3</div>
+            <div className="box">4</div>
           </div>
-          <div className="box">2</div>
-          <div className="box">3</div>
-          <div className="box">4</div>
-        </div>
-      ) : (
-        <iframe className={styles.test} src="https://en.wikipedia.org/wiki/Next.js" width="256px" height="480px" title="External Content" />
-      )}
+        ) : (
+          <iframe className={styles.test} src="https://en.wikipedia.org/wiki/Next.js" width="256px" height="480px" title="External Content" />
+        )}
+      </div>
     </div>
   )
 }
