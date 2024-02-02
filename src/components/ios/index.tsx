@@ -24,20 +24,18 @@ export default function Example() {
 
   return (
     <div>
-      {/* <UploadImage sendDataToParent={handleDataFromChild} /> */}
-      {/* <p>Status: {status ? 'true' : 'false'}</p> */}
+      <UploadImage sendDataToParent={handleDataFromChild} />
       <button onClick={handleClick}>Toggle Status</button>
       {/* <input type="text" value={inputValue} onChange={handleInputChange} /> */}
 
       <div className={styles.container}>
         {status ? (
-          <div>
-            <div className="box" onClick={handleClick}>
-              <Image src={receivedData ?? ''} width={100} height={100} alt="Selected" />
+          <div className={styles.bg}>
+            {/* <Image src="/ios.png" alt="Vercel Logo" width={320} height={610} /> */}
+            <div className={receivedData ? styles.appIcon : styles.appIcon2}>
+              <p className={styles.appIconText}>Text</p>
             </div>
-            <div className="box">2</div>
-            <div className="box">3</div>
-            <div className="box">4</div>
+            <Image src={receivedData ?? ''} width={42} height={42} alt="Selected" className={styles.emreImg} />
           </div>
         ) : (
           <iframe className={styles.test} src="https://en.wikipedia.org/wiki/Next.js" width="256px" height="480px" title="External Content" />
