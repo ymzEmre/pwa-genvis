@@ -1,41 +1,23 @@
-'use client'
-import { useState } from 'react'
-import Image from 'next/image'
 import { Button } from 'primereact/button'
+import { useDispatch } from 'react-redux'
+import { actions } from '@/stores/upload-store'
 
-const ImageUploader = ({ sendDataToParent }) => {
-  const [selectedImage, setSelectedImage] = useState(null)
-  const [uploadedImageUrl, setUploadedImageUrl] = useState(null)
+const ImageUploader = () => {
+  const dispatch = useDispatch()
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]
-    setSelectedImage(file)
 
     if (file) {
       const imageURL = URL.createObjectURL(file)
-      setUploadedImageUrl(imageURL)
-      sendDataToParent(imageURL)
+      dispatch(actions.setUploadURL(imageURL))
     }
   }
 
   return (
     <div>
       <input type="file" onChange={handleImageChange} />
-      <Button label="Click Me2" />
-
-      {selectedImage && (
-        <div>
-          <h2>Selected Image</h2>
-          {/* <img src={URL.createObjectURL(selectedImage)} alt="Selected" /> */}
-          {/* <Image src={URL.createObjectURL(selectedImage)} width={150} height={150} alt="Selected" /> */}
-        </div>
-      )}
-      {/* {uploadedImageUrl && (
-        <div>
-          <h2>Uploaded Image</h2>
-          <img src={uploadedImageUrl} alt="Uploaded" />
-        </div>
-      )} */}
+      {/* <Button label="Click Me2" /> */}
     </div>
   )
 }

@@ -27,7 +27,7 @@ export default function ManifestForm() {
     ],
   }
 
-  const manifestJson = JSON.stringify(manifestObject, null, 2)
+  const manifestJson = JSON.stringify(manifestObject, null, 4)
 
   return (
     <div>

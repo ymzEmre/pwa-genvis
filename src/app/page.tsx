@@ -4,7 +4,7 @@
 import Ios from '@/components/ios'
 import ManifestForm from '@/components/manifestForm'
 
-export default function Home() {
+export default function Page() {
   return (
     <div>
       <ManifestForm />
