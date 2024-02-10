@@ -4,3 +4,25 @@
   row-gap: 2em;
   /* max-width: 30em; */
 }
+
+.areaContainer {
+  width: 28em;
+  padding: 1.2em 1.6em;
+  border-radius: 1.6em;
+  backdrop-filter: blur(30px);
+  border: 1px solid #fff;
+}
+
+.code {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.inputWithColor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.colorPicker {
+  margin-right: 0.6em;
+}
