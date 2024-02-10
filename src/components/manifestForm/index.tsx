@@ -5,6 +5,8 @@ import styles from './styles.module.css'
 import { ColorPicker } from 'primereact/colorpicker'
 import { Dropdown } from 'primereact/dropdown'
 import UploadImage from '../uploadImage'
+import { useDispatch } from 'react-redux'
+import { actions } from '@/stores/form-store'
 
 export default function ManifestForm() {
   const [name, setName] = useState('')
@@ -15,6 +17,8 @@ export default function ManifestForm() {
   const [orientation, setOrientation] = useState('')
   const [themeColor, setThemeColor] = useState('')
   const [backgroundColor, setBackgroundColor] = useState('')
+
+  const dispatch = useDispatch()
 
   const displayList = [
     { name: 'fullscreen', value: 'fullscreen' },
@@ -46,6 +50,11 @@ export default function ManifestForm() {
     ],
   }
 
+  const inputShortName = (e) => {
+    setShortName(e.target.value)
+    dispatch(actions.setShortName(e.target.value))
+  }
+
   const manifestJson = JSON.stringify(manifestObject, null, 4)
 
   return (
@@ -68,7 +77,7 @@ export default function ManifestForm() {
         <div className="p-float-label">
           <InputText
             value={shortName}
-            onChange={(e) => setShortName(e.target.value)}
+            onChange={inputShortName}
             style={{ width: '100% ' }}
             tooltip="A shorter version of the app name, which is used on the home screen or app launcher when space is limited."
             tooltipOptions={{

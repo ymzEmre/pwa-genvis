@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux'
 
 export default function Example() {
   const imageUrl = useSelector((state) => state.upload.url)
+  const storeShortName = useSelector((state) => state.form.shortName)
+
   const [status, setStatus] = useState(true)
 
   const handleClick = () => {
@@ -19,7 +21,7 @@ export default function Example() {
         {status ? (
           <div className={styles.bg}>
             <div className={imageUrl ? styles.appIcon : styles.appIcon2}>
-              <p className={styles.appIconText}>Text</p>
+              <p className={styles.appIconText}>{storeShortName}</p>
             </div>
             <Image
               onClick={handleClick}

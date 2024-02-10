@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { actions } from '@/stores/upload-store'
 import { FileUpload } from 'primereact/fileupload'
+import { useSelector } from 'react-redux'
 
 const ImageUploader = () => {
   const dispatch = useDispatch()
