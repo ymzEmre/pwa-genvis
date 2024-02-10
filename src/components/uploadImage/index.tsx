@@ -1,23 +1,31 @@
-import { Button } from 'primereact/button'
 import { useDispatch } from 'react-redux'
 import { actions } from '@/stores/upload-store'
+import { FileUpload } from 'primereact/fileupload'
 
 const ImageUploader = () => {
   const dispatch = useDispatch()
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0]
+    if (!e.files.length) return dispatch(actions.setUploadURL(''))
 
-    if (file) {
-      const imageURL = URL.createObjectURL(file)
-      dispatch(actions.setUploadURL(imageURL))
-    }
+    const imageURL = URL.createObjectURL(e.files[0])
+
+    dispatch(actions.setUploadURL(imageURL))
   }
 
   return (
     <div>
-      <input type="file" onChange={handleImageChange} />
-      {/* <Button label="Click Me2" /> */}
+      <FileUpload
+        mode="basic"
+        chooseLabel="Icon"
+        chooseOptions={{ icon: 'pi pi-upload' }}
+        name="demo"
+        url=""
+        accept="image/*"
+        maxFileSize={1000000}
+        onUpload={handleImageChange}
+        auto
+      />
     </div>
   )
 }
