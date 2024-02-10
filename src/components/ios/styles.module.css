@@ -1,67 +1,36 @@
-.container {
-}
-
-.container div {
-  /* margin: 10px;
-  width: 100px ;
-  height: 100px;
-  background-color: rebeccapurple; */
-}
-
-
-
-.bg {
-  background-image: url('../../../public/ios.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 300px;
-  height: 613px;
+.iphone {
   position: relative;
+  width: 300px;
+  height: 600px;
 }
 
 .appIcon {
+  position: absolute;
+  top: 340px;
+  left: 33.8px;
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  /* background-image: url('https://cdn.logojoy.com/wp-content/uploads/20220329171712/dating-app-logo-tinder.png'); */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute !important;
-  top: 348px !important;
-  left: 33.8px !important;
-  cursor: pointer;
-}
-.appIcon2 {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  /* background-image: url('../../../public/emptyIcon.png'); */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute !important;
-  top: 348px !important;
-  left: 33.8px !important;
   cursor: pointer;
 }
 
-.appIcon, .appIcon2 .appIconText {
-  margin-top: 45px;
-    color: #fbd3d1 !important;
-    font-weight: 400 !important;
-    font-size: 8px;
-    left: 12px;
-    position: absolute;
+.appIcon img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
 }
 
-.bg .emreImg {
-  position: absolute !important;
-  top: 348px !important;
-  left: 33.8px !important;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  cursor: pointer;
+.iframe {
+  width: 300px;
+  height: 600px;
+}
+
+.shortName {
+  color: #f1e2e1;
+  font-weight: 400;
+  font-size: 8px;
+  left: 12px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }

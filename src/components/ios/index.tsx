@@ -18,20 +18,30 @@ export default function Example() {
   return (
     <div>
       {!status && <button onClick={handleClick}>Toggle Status</button>}
-      <div className={styles.container}>
+      <div>
         {status ? (
-          <div className={styles.bg}>
-            <div className={imageUrl ? styles.appIcon : styles.appIcon2}>
-              <p className={styles.appIconText}>{storeShortName}</p>
+          <div className={styles.iphone}>
+            <Image src="/iphone.png" width={300} height={600} alt="Iphone" />
+            <div className={styles.appIcon}>
+              {imageUrl ? (
+                <Image
+                  onClick={handleClick}
+                  src={imageUrl}
+                  width={42}
+                  height={42}
+                  alt="Selected"
+                />
+              ) : (
+                <Image
+                  onClick={handleClick}
+                  src="/emptyIcon.png"
+                  width={42}
+                  height={42}
+                  alt="Iphone"
+                />
+              )}
+              <span className={styles.shortName}>{storeShortName}</span>
             </div>
-            <Image
-              onClick={handleClick}
-              src={imageUrl ?? '/emptyIcon.png'}
-              width={42}
-              height={42}
-              alt="Selected"
-              className={styles.emreImg}
-            />
           </div>
         ) : (
           <iframe
