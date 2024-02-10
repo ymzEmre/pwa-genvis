@@ -5,7 +5,6 @@ import 'primereact/resources/themes/saga-purple/theme.css'
 import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
 
-import { store } from '@/stores'
 import { StoreProvider } from '@/stores/store-proveder'
 
 const inter = Inter({ subsets: ['latin'] })

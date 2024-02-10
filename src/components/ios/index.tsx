@@ -4,11 +4,12 @@ import styles from './styles.module.css'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import { Button } from 'primereact/button'
+import IUploadStore from '@/stores/upload-store/IUploadStore'
+import IFormStore from '@/stores/form-store/IFormStore'
 
 export default function Example() {
-  const imageUrl = useSelector((state) => state.upload.url)
-  const storeShortName = useSelector((state) => state.form.shortName)
-  const appURL = useSelector((state) => state.form.appURL)
+  const imageUrl = useSelector((state: IUploadStore) => state.upload.url)
+  const { shortName, appURL } = useSelector((state: IFormStore) => state.form)
 
   const [status, setStatus] = useState(true)
 
@@ -51,7 +52,7 @@ export default function Example() {
                   alt="Iphone"
                 />
               )}
-              <span className={styles.shortName}>{storeShortName}</span>
+              <span className={styles.shortName}>{shortName}</span>
             </div>
           </div>
         ) : (

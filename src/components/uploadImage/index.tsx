@@ -5,7 +5,7 @@ import { FileUpload } from 'primereact/fileupload'
 const ImageUploader = () => {
   const dispatch = useDispatch()
 
-  const handleImageChange = (e) => {
+  const handleImageChange = (e: any) => {
     if (!e.files.length) return dispatch(actions.setUploadURL(''))
 
     const imageURL = URL.createObjectURL(e.files[0])

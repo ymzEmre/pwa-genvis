@@ -9,9 +9,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { actions } from '@/stores/form-store'
 import copy from 'copy-to-clipboard'
 import { Button } from 'primereact/button'
+import IUploadStore from '@/stores/upload-store/IUploadStore'
 
 export default function ManifestForm() {
-  const imageName = useSelector((state) => state.upload.name)
+  const dispatch = useDispatch()
+  const imageName = useSelector((state: IUploadStore) => state.upload.name)
 
   const [name, setName] = useState('')
   const [shortName, setShortName] = useState('')
@@ -24,8 +26,6 @@ export default function ManifestForm() {
   const [appURL, setAppURL] = useState('')
 
   const [buttonClipboardIcon, setButtonClipboardIcon] = useState('pi pi-clone')
-
-  const dispatch = useDispatch()
 
   const displayList = [
     { name: 'fullscreen', value: 'fullscreen' },
@@ -57,12 +57,12 @@ export default function ManifestForm() {
     ],
   }
 
-  const inputShortName = (e) => {
+  const inputShortName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setShortName(e.target.value)
     dispatch(actions.setShortName(e.target.value))
   }
 
-  const inputAppURL = (e) => {
+  const inputAppURL = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAppURL(e.target.value)
     dispatch(actions.setAppURL(e.target.value))
   }
