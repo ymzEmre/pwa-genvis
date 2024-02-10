@@ -17,6 +17,7 @@ export default function ManifestForm() {
   const [orientation, setOrientation] = useState('')
   const [themeColor, setThemeColor] = useState('')
   const [backgroundColor, setBackgroundColor] = useState('')
+  const [appURL, setAppURL] = useState('')
 
   const dispatch = useDispatch()
 
@@ -53,6 +54,11 @@ export default function ManifestForm() {
   const inputShortName = (e) => {
     setShortName(e.target.value)
     dispatch(actions.setShortName(e.target.value))
+  }
+
+  const inputAppURL = (e) => {
+    setAppURL(e.target.value)
+    dispatch(actions.setAppURL(e.target.value))
   }
 
   const manifestJson = JSON.stringify(manifestObject, null, 4)
@@ -195,6 +201,20 @@ export default function ManifestForm() {
             value={themeColor}
             onChange={(e) => setThemeColor(`#${e.value}`)}
           />
+        </div>
+        <div className="p-float-label">
+          <InputText
+            value={appURL}
+            onChange={inputAppURL}
+            style={{ width: '100% ' }}
+            tooltip="Optional URL to the app's website. For preview purposes only."
+            tooltipOptions={{
+              position: 'right',
+              showDelay: 350,
+              style: { width: '20em' },
+            }}
+          />
+          <label htmlFor="appURL">App URL</label>
         </div>
         <UploadImage />
       </div>

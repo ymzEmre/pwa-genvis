@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 export default function Example() {
   const imageUrl = useSelector((state) => state.upload.url)
   const storeShortName = useSelector((state) => state.form.shortName)
+  const appURL = useSelector((state) => state.form.appURL)
 
   const [status, setStatus] = useState(true)
 
@@ -34,8 +35,8 @@ export default function Example() {
           </div>
         ) : (
           <iframe
-            className={styles.bg}
-            src="https://en.wikipedia.org/wiki/Next.js"
+            className={styles.iframe}
+            src={appURL}
             title="External Content"
           />
         )}
