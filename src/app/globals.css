@@ -1,4 +1,24 @@
 body {
-  background: rgb(112,31,167);
-  background: linear-gradient(90deg, rgba(112,31,167,1) 0%, rgba(123,33,0,1) 100%);
+  background-image: url('/wallpaper.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.p-float-label > label {
+  color: #ccc;
+}
+
+.p-dropdown .p-dropdown-label.p-placeholder {
+  color: #ccc;
+}
+
+.p-fileupload-choose {
+  background: transparent !important;
+}
+
+.p-inputtext:enabled:focus {
+  box-shadow: none;
+  border-color: #2196f3;
 }

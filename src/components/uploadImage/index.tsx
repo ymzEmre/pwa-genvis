@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { actions } from '@/stores/upload-store'
 import { FileUpload } from 'primereact/fileupload'
-import { useSelector } from 'react-redux'
 
 const ImageUploader = () => {
   const dispatch = useDispatch()
@@ -10,8 +9,10 @@ const ImageUploader = () => {
     if (!e.files.length) return dispatch(actions.setUploadURL(''))
 
     const imageURL = URL.createObjectURL(e.files[0])
+    const imageName = e.files[0].name
 
     dispatch(actions.setUploadURL(imageURL))
+    dispatch(actions.setUploadName(imageName))
   }
 
   return (

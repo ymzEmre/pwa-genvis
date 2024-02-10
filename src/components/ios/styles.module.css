@@ -26,11 +26,18 @@
 }
 
 .shortName {
+  width: 100%;
   color: #f1e2e1;
   font-weight: 400;
   font-size: 8px;
   left: 12px;
   display: flex;
   justify-content: center;
-  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.backButton {
+  margin-bottom: 0.5em;
 }

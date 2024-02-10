@@ -1,3 +1,10 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2em;
+}
+
 .form {
   display: grid;
   /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
@@ -7,10 +14,17 @@
 
 .areaContainer {
   width: 28em;
-  padding: 1.2em 1.6em;
+  padding: 2em;
   border-radius: 1.6em;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(14px);
   border: 1px solid #fff;
+  color: #fff;
+}
+
+.manifestContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
 }
 
 .code {
@@ -25,4 +39,17 @@
 
 .colorPicker {
   margin-right: 0.6em;
+}
+
+.inputText {
+  width: 100%;
+  background: transparent;
+  border-radius: 0.4em;
+  transition: border-color 0.5s;
+  color: #fff;
+  font-weight: 500;
+}
+
+.inputColor {
+  width: 180%;
 }

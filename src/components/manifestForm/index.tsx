@@ -5,10 +5,14 @@ import styles from './styles.module.css'
 import { ColorPicker } from 'primereact/colorpicker'
 import { Dropdown } from 'primereact/dropdown'
 import UploadImage from '../uploadImage'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { actions } from '@/stores/form-store'
+import copy from 'copy-to-clipboard'
+import { Button } from 'primereact/button'
 
 export default function ManifestForm() {
+  const imageName = useSelector((state) => state.upload.name)
+
   const [name, setName] = useState('')
   const [shortName, setShortName] = useState('')
   const [description, setDescription] = useState('')
@@ -18,6 +22,8 @@ export default function ManifestForm() {
   const [themeColor, setThemeColor] = useState('')
   const [backgroundColor, setBackgroundColor] = useState('')
   const [appURL, setAppURL] = useState('')
+
+  const [buttonClipboardIcon, setButtonClipboardIcon] = useState('pi pi-clone')
 
   const dispatch = useDispatch()
 
@@ -44,7 +50,7 @@ export default function ManifestForm() {
     background_color: backgroundColor,
     icons: [
       {
-        src: 'icon.png',
+        src: imageName ?? '',
         sizes: '192x192',
         type: 'image/png',
       },
@@ -63,19 +69,28 @@ export default function ManifestForm() {
 
   const manifestJson = JSON.stringify(manifestObject, null, 4)
 
+  const clipboardToManifestObject = () => {
+    copy(manifestJson)
+    setButtonClipboardIcon('pi pi-check')
+
+    setTimeout(() => {
+      setButtonClipboardIcon('pi pi-clone')
+    }, 1000)
+  }
+
   return (
-    <div>
+    <div className={styles.container}>
       <div className={`${styles.areaContainer} ${styles.form}`}>
         <div className="p-float-label">
           <InputText
             value={name}
+            className={styles.inputText}
             onChange={(e) => setName(e.target.value)}
-            style={{ width: '100% ' }}
             tooltip="The name of the web app."
             tooltipOptions={{
-              position: 'right',
+              position: 'left',
               showDelay: 350,
-              style: { width: '20em' },
+              style: { width: '14em' },
             }}
           />
           <label htmlFor="name">Name</label>
@@ -84,12 +99,12 @@ export default function ManifestForm() {
           <InputText
             value={shortName}
             onChange={inputShortName}
-            style={{ width: '100% ' }}
+            className={styles.inputText}
             tooltip="A shorter version of the app name, which is used on the home screen or app launcher when space is limited."
             tooltipOptions={{
-              position: 'right',
+              position: 'left',
               showDelay: 350,
-              style: { width: '20em' },
+              style: { width: '14em' },
             }}
           />
           <label htmlFor="shortName">Short Name</label>
@@ -98,12 +113,12 @@ export default function ManifestForm() {
           <InputText
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            style={{ width: '100% ' }}
+            className={styles.inputText}
             tooltip="A brief description of the web app."
             tooltipOptions={{
-              position: 'right',
+              position: 'left',
               showDelay: 350,
-              style: { width: '20em' },
+              style: { width: '14em' },
             }}
           />
           <label htmlFor="description">Description</label>
@@ -113,11 +128,11 @@ export default function ManifestForm() {
             value={startUrl}
             onChange={(e) => setStartUrl(e.target.value)}
             tooltip="The URL that should be loaded when the app is launched."
-            style={{ width: '100% ' }}
+            className={styles.inputText}
             tooltipOptions={{
-              position: 'right',
+              position: 'left',
               showDelay: 350,
-              style: { width: '20em' },
+              style: { width: '14em' },
             }}
           />
           <label htmlFor="startURL">Start URL</label>
@@ -131,12 +146,12 @@ export default function ManifestForm() {
             optionLabel="Display"
             showClear
             placeholder="Select a Display"
-            className="w-full md:w-14rem"
+            className={[styles.inputText, 'w-full md:w-14rem'].join(' ')}
             tooltip="Specifies how the web app should be displayed. Possible values include 'fullscreen', 'standalone', 'minimal-ui', and 'browser'."
             tooltipOptions={{
-              position: 'right',
+              position: 'left',
               showDelay: 350,
-              style: { width: '20em' },
+              style: { width: '14em' },
             }}
           />
         </div>
@@ -149,48 +164,27 @@ export default function ManifestForm() {
             optionLabel="Orientation"
             showClear
             placeholder="Select a Orientation"
-            className="w-full md:w-1rem"
+            className={[styles.inputText, 'w-full md:w-14rem'].join(' ')}
             tooltip="Specifies the default orientation of the web app (e.g., 'portrait' or 'landscape')."
             tooltipOptions={{
-              position: 'right',
+              position: 'left',
               showDelay: 350,
-              style: { width: '20em' },
+              style: { width: '14em' },
             }}
           />
         </div>
-        <div className={styles.inputWithColor}>
-          <div className="p-float-label">
-            <InputText
-              value={backgroundColor}
-              onChange={(e) => setBackgroundColor(e.target.value)}
-              style={{ width: '200%' }}
-              tooltip="The background color of the splash screen when the app is launched."
-              tooltipOptions={{
-                position: 'right',
-                showDelay: 350,
-                style: { width: '20em' },
-              }}
-            />
-            <label htmlFor="backgroundColor">Background Color</label>
-          </div>
-          <ColorPicker
-            className={styles.colorPicker}
-            format="hex"
-            value={backgroundColor}
-            onChange={(e) => setBackgroundColor(`#${e.value}`)}
-          />
-        </div>
+
         <div className={styles.inputWithColor}>
           <div className="p-float-label">
             <InputText
               value={themeColor}
               onChange={(e) => setThemeColor(e.target.value)}
-              style={{ width: '200%' }}
+              className={[styles.inputColor, styles.inputText].join(' ')}
               tooltip="The color used for the toolbar or address bar."
               tooltipOptions={{
-                position: 'right',
+                position: 'left',
                 showDelay: 350,
-                style: { width: '20em' },
+                style: { width: '14em' },
               }}
             />
             <label htmlFor="themeColor">Theme Color</label>
@@ -202,24 +196,56 @@ export default function ManifestForm() {
             onChange={(e) => setThemeColor(`#${e.value}`)}
           />
         </div>
+        <div className={styles.inputWithColor}>
+          <div className="p-float-label">
+            <InputText
+              value={backgroundColor}
+              onChange={(e) => setBackgroundColor(e.target.value)}
+              className={[styles.inputColor, styles.inputText].join(' ')}
+              tooltip="The background color of the splash screen when the app is launched."
+              tooltipOptions={{
+                position: 'left',
+                showDelay: 350,
+                style: { width: '14em' },
+              }}
+            />
+            <label htmlFor="backgroundColor">Background Color</label>
+          </div>
+          <ColorPicker
+            className={styles.colorPicker}
+            format="hex"
+            value={backgroundColor}
+            onChange={(e) => setBackgroundColor(`#${e.value}`)}
+          />
+        </div>
         <div className="p-float-label">
           <InputText
             value={appURL}
             onChange={inputAppURL}
-            style={{ width: '100% ' }}
+            className={styles.inputText}
             tooltip="Optional URL to the app's website. For preview purposes only."
             tooltipOptions={{
-              position: 'right',
+              position: 'left',
               showDelay: 350,
-              style: { width: '20em' },
+              style: { width: '14em' },
             }}
           />
           <label htmlFor="appURL">App URL</label>
         </div>
         <UploadImage />
       </div>
-      <div className={styles.areaContainer}>
+      <div
+        className={[styles.areaContainer, styles.manifestContainer].join(' ')}
+      >
         <pre className={styles.code}>{manifestJson}</pre>
+
+        <Button
+          onClick={clipboardToManifestObject}
+          icon={buttonClipboardIcon}
+          outlined
+          severity="success"
+          aria-label="clipboard"
+        />
       </div>
     </div>
   )

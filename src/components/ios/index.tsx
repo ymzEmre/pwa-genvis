@@ -3,6 +3,7 @@ import { useState } from 'react'
 import styles from './styles.module.css'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
+import { Button } from 'primereact/button'
 
 export default function Example() {
   const imageUrl = useSelector((state) => state.upload.url)
@@ -17,7 +18,17 @@ export default function Example() {
 
   return (
     <div>
-      {!status && <button onClick={handleClick}>Toggle Status</button>}
+      {!status && (
+        <Button
+          onClick={handleClick}
+          className={styles.backButton}
+          icon="pi pi-arrow-left"
+          outlined
+          severity="warning"
+          aria-label="back-button"
+        />
+      )}
+
       <div>
         {status ? (
           <div className={styles.iphone}>
