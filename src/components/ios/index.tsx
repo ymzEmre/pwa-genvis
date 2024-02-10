@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react'
 import styles from './styles.module.css'
-import UploadImage from '../uploadImage'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
 
@@ -15,19 +14,28 @@ export default function Example() {
 
   return (
     <div>
-      <UploadImage />
-      <button onClick={handleClick}>Toggle Status</button>
-
+      {!status && <button onClick={handleClick}>Toggle Status</button>}
       <div className={styles.container}>
         {status ? (
           <div className={styles.bg}>
             <div className={imageUrl ? styles.appIcon : styles.appIcon2}>
               <p className={styles.appIconText}>Text</p>
             </div>
-            {imageUrl ? <Image src={imageUrl ?? ''} width={42} height={42} alt="Selected" className={styles.emreImg} /> : <p>No Image</p>}
+            <Image
+              onClick={handleClick}
+              src={imageUrl ?? '/emptyIcon.png'}
+              width={42}
+              height={42}
+              alt="Selected"
+              className={styles.emreImg}
+            />
           </div>
         ) : (
-          <iframe className={styles.test} src="https://en.wikipedia.org/wiki/Next.js" width="256px" height="480px" title="External Content" />
+          <iframe
+            className={styles.bg}
+            src="https://en.wikipedia.org/wiki/Next.js"
+            title="External Content"
+          />
         )}
       </div>
     </div>
