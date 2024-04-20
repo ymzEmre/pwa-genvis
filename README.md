@@ -2,7 +2,7 @@
 
 A tool to generate a manifest.json file for your PWA application and visualise it real-time.
 
-Genvis equates to "Generate & Visualisez".
+Genvis equates to Generate & Visualizer.
 
 ## Table of Contents
 
