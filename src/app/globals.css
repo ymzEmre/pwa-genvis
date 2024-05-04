@@ -7,11 +7,15 @@ body {
 }
 
 .p-float-label > label {
-  color: #ccc;
+  color: #dcdcdc;
 }
 
 .p-dropdown .p-dropdown-label.p-placeholder {
-  color: #ccc;
+  color: #dcdcdc;
+}
+
+.p-dropdown.p-dropdown-clearable .p-dropdown-label {
+  color: #dcdcdc;
 }
 
 .p-fileupload-choose {
@@ -22,6 +26,16 @@ body {
   background: transparent;
   backdrop-filter: blur(24px);
   border-radius: 10px;
+}
+
+.p-dropdown-panel
+  .p-dropdown-items
+  .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+  background: #5c1368;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  background: #5c1368;
 }
 
 .p-inputtext:enabled:focus {
