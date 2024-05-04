@@ -20,7 +20,7 @@ export default function ManifestForm() {
   const [description, setDescription] = useState('')
   const [startUrl, setStartUrl] = useState('')
   const [display, setDisplay] = useState('')
-  const [orientation, setOrientation] = useState('')
+  const [orientation, setOrientation] = useState(null)
   const [themeColor, setThemeColor] = useState('')
   const [backgroundColor, setBackgroundColor] = useState('')
   const [appURL, setAppURL] = useState('')
@@ -28,16 +28,13 @@ export default function ManifestForm() {
   const [buttonClipboardIcon, setButtonClipboardIcon] = useState('pi pi-clone')
 
   const displayList = [
-    { name: 'fullscreen', value: 'fullscreen' },
-    { name: 'standalone', value: 'standalone' },
-    { name: 'minimal-ui', value: 'minimal-ui' },
-    { name: 'browser', value: 'browser' },
+    { name: 'fullscreen' },
+    { name: 'standalone' },
+    { name: 'minimal-ui' },
+    { name: 'browser' },
   ]
 
-  const orientationList = [
-    { name: 'portrait', value: 'portrait' },
-    { name: 'landscape', value: 'landscape' },
-  ]
+  const orientationList = [{ name: 'portrait' }, { name: 'landscape' }]
 
   const manifestObject = {
     name: name,
@@ -81,6 +78,8 @@ export default function ManifestForm() {
   return (
     <div className={styles.container}>
       <div className={`${styles.areaContainer} ${styles.form}`}>
+        <div className="card flex justify-content-center"></div>
+        {/*  */}
         <div className="p-float-label">
           <InputText
             value={name}
@@ -143,7 +142,7 @@ export default function ManifestForm() {
             onChange={(e) => setDisplay(e.value)}
             style={{ width: '100% ' }}
             options={displayList}
-            optionLabel="Display"
+            optionLabel="name"
             showClear
             placeholder="Select a Display"
             className={[styles.inputText, 'w-full md:w-14rem'].join(' ')}
@@ -161,7 +160,7 @@ export default function ManifestForm() {
             onChange={(e) => setOrientation(e.value)}
             style={{ width: '100% ' }}
             options={orientationList}
-            optionLabel="Orientation"
+            optionLabel="name"
             showClear
             placeholder="Select a Orientation"
             className={[styles.inputText, 'w-full md:w-14rem'].join(' ')}
@@ -243,7 +242,6 @@ export default function ManifestForm() {
           onClick={clipboardToManifestObject}
           icon={buttonClipboardIcon}
           outlined
-          severity="success"
           aria-label="clipboard"
         />
       </div>

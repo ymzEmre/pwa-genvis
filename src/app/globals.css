@@ -18,7 +18,21 @@ body {
   background: transparent !important;
 }
 
+.p-dropdown-panel {
+  background: transparent;
+  backdrop-filter: blur(24px);
+  border-radius: 10px;
+}
+
 .p-inputtext:enabled:focus {
   box-shadow: none;
-  border-color: #2196f3;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  color: #fff;
+}
+
+.pi-clone,
+.pi-check {
+  color: #fff;
 }
