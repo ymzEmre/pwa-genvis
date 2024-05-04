@@ -21,9 +21,11 @@ Genvis equates to Generate & Visualizer.
 
 ```JavaScript
 npm install
+```
 
 &
 
+```
 npm run dev
 ```
 
