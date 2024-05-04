@@ -13,9 +13,9 @@ Genvis equates to Generate & Visualizer.
 
 ## Features
 
-- Generate a manifest.json file for your PWA application
-- Visualise the manifest.json file real-time
-- Visualise app icon and name
+- Generate a manifest.json file for your PWA application.
+- Visualise the manifest.json file real-time.
+- Visualise app icon and name.
 
 ## Installation
 
